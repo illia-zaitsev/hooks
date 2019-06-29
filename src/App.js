@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import {createStore} from 'redux';
+
 import './App.css';
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Content from "./components/content";
+import {reducer} from "./reducer/reducer";
+import {createEffects} from "./services/createEffects";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const store = createStore(reducer);
+    const effects = createEffects(store.dispatch);
+
+    return (
+        <StoreContext.Provider value={store}>
+            <EffectContext.Provider value={effects}>
+                <Header/>
+                <Content/>
+                <Footer/>
+            </EffectContext.Provider>
+        </StoreContext.Provider>
+  )
 }
 
 export default App;
+export const StoreContext = React.createContext('');
+export const EffectContext = React.createContext('');

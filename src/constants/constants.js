@@ -1,0 +1,15 @@
+// trigger actions
+
+export const ACTIONS = {
+    SEARCH_CHANGED: 'SEARCH_CHANGED',
+    COUNT_CHANGED: 'COUNT_CHANGED',
+    CONCERTS_SUCCESS: 'CONCERTS_SUCCESS',
+    CONCERTS_LOADING: 'CONCERTS_LOADING',
+    CONCERTS_FAILED: 'CONCERTS_FAILED',
+};
+
+// trigger side effects
+
+export const EFFECTS = {
+    CONCERTS_LOAD: 'CONCERTS_LOAD',
+};
